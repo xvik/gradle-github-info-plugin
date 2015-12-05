@@ -118,9 +118,9 @@ Otherwise, `licenseName` must be specified manually.
  
 `licenseUrl` default:
  * Looks if `LICENSE` or `LICENSE.txt` file contained in project root, then url will be
- `https://raw.githubusercontent.com/$user/$repository/master/folder/LICENSE` (or with txt extension accordingly)
+ `https://raw.githubusercontent.com/$user/$repository/master/LICENSE` (or with txt extension accordingly)
  * If license file not found in project, but `license` matches known license id (table above) then url will be set as
-  link to `opensource.org` (see links above in table)
+  link to `opensource.org` (see links above)
  * If neither license file found nor license id recognized then url must be set manually 
 
 #### Utility method
