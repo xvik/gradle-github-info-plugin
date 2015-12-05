@@ -35,7 +35,7 @@ buildscript {
 apply plugin: 'ru.vyarus.github-info'
 ```
 
-OR (waiting for approve)
+OR 
 
 ```groovy
 plugins {
