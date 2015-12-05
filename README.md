@@ -1,6 +1,6 @@
 #Gradle Github info plugin
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
-[![Build Status](http://img.shields.io/travis/xvik/gradle-github-info-plugin.svg)](https://travis-ci.org/xvik/gradle-pom-plugin)
+[![Build Status](http://img.shields.io/travis/xvik/gradle-github-info-plugin.svg)](https://travis-ci.org/xvik/gradle-github-info-plugin)
 
 ### About
 
@@ -84,9 +84,9 @@ somePlugin {
 
 | Property | Description |  Default value |
 |----------|-------------|----------------|
-| *user* | Github user or organization name | |
+| user | Github user or organization name | |
 | repository | Github repository name | $project.name |
-| *license* | License short name (e.g. 'MIT') | |
+| license | License short name (e.g. 'MIT') | |
 | licenseName | License full name (e.g. 'The MIT License') | may be set by convention (see license section) |
 | licenseUrl | Url to license file | may be set by convention (see license section) |
 | repositoryUrl | Github repository url | https://github.com/$user/$repository |
@@ -144,7 +144,7 @@ Branch parameter is optional ('master' by default)
 
 ### Plugins defaults
 
-Plugins recognize some common plugins and apply default values to them (but not overrides user configuration!)
+Plugin recognize some common plugins and apply default values to them (but not overrides user configuration!)
 
 #### maven-publish
 
