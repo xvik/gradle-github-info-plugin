@@ -12,7 +12,7 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
  * {@code licenseName} will be set to full license name. If license file not found in project then
  * {@code licenseUrl} will be set as link to license page on opensource.org.
  *
- * @author Vyacheslav Rusakov 
+ * @author Vyacheslav Rusakov
  * @since 01.12.2015
  */
 class LicenseHelper {

@@ -17,7 +17,7 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
  * </pre>
  * Configuration set only if no value provided yet (user configuration is not overridden).
  *
- * @author Vyacheslav Rusakov 
+ * @author Vyacheslav Rusakov
  * @since 01.12.2015
  */
 class BintrayConfigurer implements GithubInfoConfigurer {

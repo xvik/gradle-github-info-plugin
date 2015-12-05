@@ -28,7 +28,7 @@ import ru.vyarus.gradle.plugin.github.helper.LicenseHelper
  * <p>
  * Special method {@code rawFileUrl} may be used to generate direct links to files on github repository.
  *
- * @author Vyacheslav Rusakov 
+ * @author Vyacheslav Rusakov
  * @since 10.11.2015
  */
 class GithubInfoExtension {

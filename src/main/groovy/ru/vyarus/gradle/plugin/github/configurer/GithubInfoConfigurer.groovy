@@ -6,7 +6,7 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
 /**
  * Configurer implementation configures exact plugin with info from {@link GithubInfoExtension}.
  *
- * @author Vyacheslav Rusakov 
+ * @author Vyacheslav Rusakov
  * @since 01.12.2015
  */
 interface GithubInfoConfigurer {

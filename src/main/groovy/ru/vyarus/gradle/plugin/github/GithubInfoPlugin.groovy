@@ -17,7 +17,7 @@ import ru.vyarus.gradle.plugin.github.configurer.PomConfigurer
  * Plugin detects and configure the following plugins: maven-publish (pom), plugin-publish and bintray.
  * (see {@link GithubInfoConfigurer} implementations).
  *
- * @author Vyacheslav Rusakov 
+ * @author Vyacheslav Rusakov
  * @since 10.11.2015
  * @see GithubInfoExtension
  */
