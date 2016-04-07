@@ -1,6 +1,7 @@
 package ru.vyarus.gradle.plugin.github
 
 import org.gradle.api.Project
+import ru.vyarus.gradle.plugin.github.helper.ChangelogHelper
 import ru.vyarus.gradle.plugin.github.helper.LicenseHelper
 
 /**
@@ -32,10 +33,12 @@ import ru.vyarus.gradle.plugin.github.helper.LicenseHelper
  * @since 10.11.2015
  */
 class GithubInfoExtension {
-    private final LicenseHelper helper
+    private final LicenseHelper licenseHelper
+    private final ChangelogHelper changelogHelper
 
     GithubInfoExtension(Project project) {
-        helper = new LicenseHelper(project)
+        licenseHelper = new LicenseHelper(project)
+        changelogHelper = new ChangelogHelper(project)
         repository = project.name
     }
 
@@ -61,12 +64,13 @@ class GithubInfoExtension {
     String site
     String vcsUrl
     String scmConnection
+    String changelogFile
 
     /**
      * License name (e.g. The MIT License). Required for some licenses.
      */
     String getLicenseName() {
-        licenseName ?: helper.defaultLicenseName(this)
+        licenseName ?: licenseHelper.defaultLicenseName(this)
     }
 
     /**
@@ -74,7 +78,17 @@ class GithubInfoExtension {
      * otherwise field must be filled manually for some licenses.
      */
     String getLicenseUrl() {
-        licenseUrl ?: helper.defaultLicenseUrl(this)
+        licenseUrl ?: licenseHelper.defaultLicenseUrl(this)
+    }
+
+    /**
+     *
+     * Changelog file path relative to root. Default to CHANGELOG.md, CHANGELOG.txt or CHANGELOG
+     * if file with this name found in project root, otherwise should be specified manually.
+     * (for now, only bintray support this optional info)
+     */
+    String getChangelogFile() {
+        changelogFile ?: changelogHelper.defaultChangelogName()
     }
 
     /**

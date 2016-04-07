@@ -12,6 +12,8 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
  *             issueTrackerUrl = github.issues
  *             vcsUrl = github.vcsUrl
  *             licenses = [github.license]
+ *             githubRepo = "$github.user/$github.repository"
+ *             githubReleaseNotesFile = 'CHANGELOG.md'
  *         }
  *     }
  * </pre>
@@ -31,6 +33,8 @@ class BintrayConfigurer implements GithubInfoConfigurer {
                     issueTrackerUrl = issueTrackerUrl ?: github.issues
                     vcsUrl = vcsUrl ?: github.vcsUrl
                     licenses = licenses ?: [github.license]
+                    githubRepo = githubRepo ?: "$github.user/$github.repository"
+                    githubReleaseNotesFile = githubReleaseNotesFile ?: github.changelogFile
                 }
             }
         }

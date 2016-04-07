@@ -26,7 +26,7 @@ class GithubInfoPlugin implements Plugin<Project> {
     private final List<GithubInfoConfigurer> support = [
             new PomConfigurer(),
             new PluginPublishConfigurer(),
-            new BintrayConfigurer()
+            new BintrayConfigurer(),
     ]
 
     @Override
