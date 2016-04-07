@@ -13,7 +13,7 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
  *             vcsUrl = github.vcsUrl
  *             licenses = [github.license]
  *             githubRepo = "$github.user/$github.repository"
- *             githubReleaseNotesFile = 'CHANGELOG.md'
+ *             githubReleaseNotesFile = github.changelogFile
  *         }
  *     }
  * </pre>
