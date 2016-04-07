@@ -29,7 +29,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'ru.vyarus:gradle-github-info-plugin:1.0.0'
+        classpath 'ru.vyarus:gradle-github-info-plugin:1.1.0'
     }
 }
 apply plugin: 'ru.vyarus.github-info'
@@ -39,7 +39,7 @@ OR
 
 ```groovy
 plugins {
-    id 'ru.vyarus.github-info' version '1.0.0'
+    id 'ru.vyarus.github-info' version '1.1.0'
 }
 ```
 
@@ -94,6 +94,7 @@ somePlugin {
 | site | Project website | $repositoryUrl |
 | vcsUrl | Version control url | https://github.com/$user/${repository}.git |
 | scmConnection | SCM connection url | scm:git:git://github.com/$user/${repository}.git |
+| changelogFile | Path to changelog file, relative to project root. | CHANGELOG.md, CHANGELOG.txt or CHANGELOG if file found in project root |
 
 #### License
 
@@ -198,9 +199,11 @@ bintray {
         issueTrackerUrl = github.issues
         vcsUrl = github.vcsUrl
         licenses = [github.license]
+        githubRepo = "$github.user/$github.repository"
+        githubReleaseNotesFile = github.changelogFile
     }
 }
-```
+``` 
 
 So you can avoid these properties in `bintray` configuration in your build file. If you manually specify any of these
 values it will not be overridden.

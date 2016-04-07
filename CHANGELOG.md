@@ -1,3 +1,4 @@
+### 1.1.0 (2016-04-08)
 * Add `changelogFile` configuration property, used to specify changelog file path. Default file name is recognized by 
     CHANGELOG.md, CHANGELOG.txt or CHANGELOG files in project root.
 * Add bintray plugin properties support (available since 1.6 plugin version):
