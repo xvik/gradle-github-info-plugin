@@ -35,9 +35,9 @@ dependencies {
         exclude module: 'groovy-all'
     }
     testRuntime files(createClasspathManifest)
-    testCompile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+    testCompile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
     testCompile 'ru.vyarus:gradle-java-lib-plugin:1.0.1'
-    testCompile 'com.gradle.publish:plugin-publish-plugin:0.9.2'
+    testCompile 'com.gradle.publish:plugin-publish-plugin:0.9.4'
 }
 
 group = 'ru.vyarus'
