@@ -94,7 +94,7 @@ somePlugin {
 | site | Project website | $repositoryUrl |
 | vcsUrl | Version control url | https://github.com/$user/${repository}.git |
 | scmConnection | SCM connection url | scm:git:git://github.com/$user/${repository}.git |
-| changelogFile | Path to changelog file, relative to project root. | CHANGELOG.md, CHANGELOG.txt or CHANGELOG if file found in project root |
+| changelogFile | Path to changelog file, relative to project root | CHANGELOG.md, CHANGELOG.txt or CHANGELOG if file found in project root |
 
 #### License
 
@@ -207,3 +207,6 @@ bintray {
 
 So you can avoid these properties in `bintray` configuration in your build file. If you manually specify any of these
 values it will not be overridden.
+
+Note that github* properties are required to configure bintray ui for showing github readme as main documentation 
+and changelog as release notes files
