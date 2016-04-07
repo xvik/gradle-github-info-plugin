@@ -66,4 +66,24 @@ class BintrayConfigurerTest extends AbstractTest {
         project.bintray.pkg.githubRepo == projectId
         project.bintray.pkg.githubReleaseNotesFile == 'FOO.txt'
     }
+
+    def "Changelog override test"() {
+
+        when: "plugin configured"
+        file('CHANGELOG.md').createNewFile()
+        Project project = project {
+            apply plugin: 'java'
+            apply plugin: 'ru.vyarus.github-info'
+            apply plugin: 'com.jfrog.bintray'
+
+            github {
+                user 'test'
+                license 'MIT'
+                changelogFile = 'FOO.txt'
+            }
+        }
+
+        then: "user config preserved"
+        project.bintray.pkg.githubReleaseNotesFile == 'FOO.txt'
+    }
 }
