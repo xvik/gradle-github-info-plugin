@@ -11,8 +11,8 @@ The main intention is to remove boilerplate and simplify project configuration.
 * `github` may be used directly in other configuration closures (e.g. `github.site`)
 * Configures default values for `maven-publish` (pom), `plugin-publish` and `com.jfrog.bintray` plugins
 
-You can use it with [ru.vyarus.java-lib](https://github.com/xvik/gradle-java-lib-plugin) to remove more configuration boilerplate
-for java library.
+You can use it with [java-lib plugin](https://github.com/xvik/gradle-java-lib-plugin) to remove more configuration boilerplate
+for java or groovy library.
 
 ### Setup
 
@@ -210,3 +210,13 @@ values it will not be overridden.
 
 Note that github* properties are required to configure bintray ui for showing github readme as main documentation 
 and changelog as release notes files
+
+
+### Might also like
+
+* [quality-plugin](https://github.com/xvik/gradle-quality-plugin) - java and groovy source quality checks
+* [pom-plugin](https://github.com/xvik/gradle-pom-plugin) - improves pom generation
+* [java-library generator](https://github.com/xvik/generator-lib-java) - java library project generator
+
+-
+[![gradle plugin generator](http://img.shields.io/badge/Powered%20by-%20Gradle%20plugin%20generator-green.svg?style=flat-square)](https://github.com/xvik/generator-gradle-plugin) 
