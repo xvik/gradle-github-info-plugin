@@ -12,19 +12,18 @@ import spock.lang.Specification
  */
 abstract class AbstractKitTest extends Specification {
 
+    static String BINTRAY_PLUGIN_VERSION = '1.7.1'
+    static String JAVALIB_PLUGIN_VERSION = '1.0.3'
+
     @Rule
     final TemporaryFolder testProjectDir = new TemporaryFolder()
     File buildFile
 
-    List<File> pluginClasspath
-
     def setup() {
-        def pluginClasspathResource = getClass().classLoader.findResource("plugin-classpath.txt")
-        if (pluginClasspathResource == null) {
-            throw new IllegalStateException("Did not find plugin classpath resource, run `testClasses` build task.")
-        }
-        pluginClasspath = pluginClasspathResource.readLines().collect { new File(it) }
         buildFile = testProjectDir.newFile('build.gradle')
+        // override maven local repository
+        // (see org.gradle.api.internal.artifacts.mvnsettings.DefaultLocalMavenRepositoryLocator.getLocalMavenRepository)
+        System.setProperty("maven.repo.local", new File(testProjectDir.root, "build/repo").getAbsolutePath());
     }
 
     def build(String file) {
@@ -41,6 +40,10 @@ abstract class AbstractKitTest extends Specification {
         target << getClass().getResourceAsStream(source).text
     }
 
+    def debug() {
+        file('gradle.properties') << "org.gradle.jvmargs=-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000"
+    }
+
     String projectName() {
         return testProjectDir.root.getName()
     }
@@ -49,7 +52,7 @@ abstract class AbstractKitTest extends Specification {
         GradleRunner.create()
                 .withProjectDir(testProjectDir.root)
                 .withArguments((commands + ['--stacktrace']) as String[])
-                .withPluginClasspath(pluginClasspath)
+                .withPluginClasspath()
                 .forwardOutput()
     }
 

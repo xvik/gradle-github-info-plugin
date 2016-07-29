@@ -15,9 +15,8 @@ class ConfigurationReferenceKitTest extends AbstractKitTest {
             plugins {
                 id 'java'
                 id 'ru.vyarus.github-info'
+                id 'com.jfrog.bintray' version '$BINTRAY_PLUGIN_VERSION'
             }
-
-            apply plugin: com.jfrog.bintray.gradle.BintrayPlugin
 
             group 'ru.vyarus'
             version 1.0
@@ -59,9 +58,8 @@ class ConfigurationReferenceKitTest extends AbstractKitTest {
             plugins {
                 id 'java'
                 id 'ru.vyarus.github-info'
+                id 'com.jfrog.bintray' version '$BINTRAY_PLUGIN_VERSION'
             }
-
-            apply plugin: com.jfrog.bintray.gradle.BintrayPlugin
 
             group 'ru.vyarus'
             version 1.0

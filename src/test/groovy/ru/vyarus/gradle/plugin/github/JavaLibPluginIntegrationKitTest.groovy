@@ -11,8 +11,8 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
             plugins {
                 id 'java'
                 id 'ru.vyarus.github-info'
+                id 'ru.vyarus.java-lib' version '$JAVALIB_PLUGIN_VERSION'
             }
-            apply plugin: ru.vyarus.gradle.plugin.lib.JavaLibPlugin
 
             group 'ru.vyarus'
             version 1.0
@@ -82,8 +82,8 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
             plugins {
                 id 'java'
                 id 'ru.vyarus.github-info'
+                id 'ru.vyarus.java-lib' version '$JAVALIB_PLUGIN_VERSION'
             }
-            apply plugin: ru.vyarus.gradle.plugin.lib.JavaLibPlugin
 
             group 'ru.vyarus'
             version 1.0

@@ -1,0 +1,23 @@
+{
+  "generator-gradle-plugin": {
+    "githubUser": "xvik",
+    "authorName": "Vyacheslav Rusakov",
+    "authorEmail": "vyarus@gmail.com",
+    "projectName": "gradle-github-info-plugin",
+    "projectGroup": "ru.vyarus",
+    "projectPackage": "ru.vyarus.gradle.plugin.github",
+    "projectVersion": "0.1.0",
+    "projectDesc": "Gradle Github info plugin",
+    "pluginPortalDesc": "Generates common Github links by convention and configures common plugins",
+    "targetJava": "1.6",
+    "pluginPortalTags": "github",
+    "mirrorToJcenter": true,
+    "pluginPortalUseCustomGroup": true,
+    "bintrayUser": "vyarus",
+    "bintrayRepo": "xvik",
+    "bintrayTags": "gradle, github",
+    "bintraySignFiles": true,
+    "mavenCentralSync": true,
+    "usedGeneratorVersion": "1.2.0"
+  }
+}
