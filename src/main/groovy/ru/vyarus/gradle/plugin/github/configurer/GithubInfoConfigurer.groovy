@@ -1,5 +1,6 @@
 package ru.vyarus.gradle.plugin.github.configurer
 
+import groovy.transform.CompileStatic
 import org.gradle.api.Project
 import ru.vyarus.gradle.plugin.github.GithubInfoExtension
 
@@ -9,6 +10,7 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
  * @author Vyacheslav Rusakov
  * @since 01.12.2015
  */
+@CompileStatic
 interface GithubInfoConfigurer {
 
     /**

@@ -1,5 +1,6 @@
 package ru.vyarus.gradle.plugin.github.helper
 
+import groovy.transform.CompileStatic
 import org.gradle.api.Project
 import ru.vyarus.gradle.plugin.github.GithubInfoExtension
 
@@ -15,6 +16,7 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
  * @author Vyacheslav Rusakov
  * @since 01.12.2015
  */
+@CompileStatic
 class LicenseHelper {
     private final List<String> licenseFileNames = ['LICENSE', 'LICENSE.txt']
 
@@ -40,9 +42,9 @@ class LicenseHelper {
 
     LicenseHelper(Project project) {
         this.project = project
-        licenses.each {
-            descriptions.put(it[0], new LicenseDescription(
-                    id: it[0], name: it[1], url: "http://opensource.org/licenses/${it[2]}"))
+        licenses.each { String[] lic ->
+            descriptions.put(lic[0], new LicenseDescription(
+                    id: lic[0], name: lic[1], url: "http://opensource.org/licenses/${lic[2]}"))
         }
     }
 

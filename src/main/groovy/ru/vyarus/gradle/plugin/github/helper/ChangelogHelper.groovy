@@ -1,5 +1,6 @@
 package ru.vyarus.gradle.plugin.github.helper
 
+import groovy.transform.CompileStatic
 import org.gradle.api.Project
 
 /**
@@ -11,6 +12,7 @@ import org.gradle.api.Project
  * @author Vyacheslav Rusakov
  * @since 08.04.2016
  */
+@CompileStatic
 class ChangelogHelper {
     private final List<String> changelogFileNames = ['CHANGELOG.md', 'CHANGELOG.txt', 'CHANGELOG']
 

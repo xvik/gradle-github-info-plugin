@@ -1,5 +1,6 @@
 package ru.vyarus.gradle.plugin.github
 
+import groovy.transform.CompileStatic
 import org.gradle.api.Project
 import ru.vyarus.gradle.plugin.github.helper.ChangelogHelper
 import ru.vyarus.gradle.plugin.github.helper.LicenseHelper
@@ -32,6 +33,7 @@ import ru.vyarus.gradle.plugin.github.helper.LicenseHelper
  * @author Vyacheslav Rusakov
  * @since 10.11.2015
  */
+@CompileStatic
 class GithubInfoExtension {
     private final LicenseHelper licenseHelper
     private final ChangelogHelper changelogHelper

@@ -1,5 +1,7 @@
 package ru.vyarus.gradle.plugin.github.configurer
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
@@ -34,6 +36,7 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
  * @author Vyacheslav Rusakov
  * @since 01.12.2015
  */
+@CompileStatic(TypeCheckingMode.SKIP)
 class PomConfigurer implements GithubInfoConfigurer {
 
     @Override

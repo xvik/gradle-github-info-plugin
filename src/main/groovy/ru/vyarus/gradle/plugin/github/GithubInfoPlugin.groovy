@@ -1,5 +1,6 @@
 package ru.vyarus.gradle.plugin.github
 
+import groovy.transform.CompileStatic
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import ru.vyarus.gradle.plugin.github.configurer.BintrayConfigurer
@@ -21,6 +22,7 @@ import ru.vyarus.gradle.plugin.github.configurer.PomConfigurer
  * @since 10.11.2015
  * @see GithubInfoExtension
  */
+@CompileStatic
 class GithubInfoPlugin implements Plugin<Project> {
 
     private final List<GithubInfoConfigurer> support = [
