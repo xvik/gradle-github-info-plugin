@@ -1,4 +1,4 @@
-#Gradle Github info plugin
+# Gradle Github info plugin
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![Build Status](http://img.shields.io/travis/xvik/gradle-github-info-plugin.svg)](https://travis-ci.org/xvik/gradle-github-info-plugin)
 
