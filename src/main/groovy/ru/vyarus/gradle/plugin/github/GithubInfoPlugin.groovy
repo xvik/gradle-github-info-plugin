@@ -25,11 +25,11 @@ import ru.vyarus.gradle.plugin.github.configurer.PomConfigurer
 @CompileStatic
 class GithubInfoPlugin implements Plugin<Project> {
 
-    private final List<GithubInfoConfigurer> support = [
+    private final List<GithubInfoConfigurer> support = new ArrayList<>([
             new PomConfigurer(),
             new PluginPublishConfigurer(),
             new BintrayConfigurer(),
-    ] as List<GithubInfoConfigurer>
+    ])
 
     @Override
     void apply(Project project) {
