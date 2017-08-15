@@ -8,7 +8,7 @@ import org.gradle.testkit.runner.TaskOutcome
  * @author Vyacheslav Rusakov 
  * @since 03.12.2015
  */
-class DependencyFreeTest extends AbstractKitTest {
+class DependencyFreeKitTest extends AbstractKitTest {
 
     def "Check plugin works without custom plugins"() {
 
@@ -36,7 +36,7 @@ class DependencyFreeTest extends AbstractKitTest {
         BuildResult result = GradleRunner.create()
                 .withProjectDir(testProjectDir.root)
                 .withArguments('checkState', '--stacktrace')
-                .withPluginClasspath([new File('build/classes/main'), new File('build/resources/main')])
+                .withPluginClasspath([new File('build/classes/groovy/main'), new File('build/resources/main')])
                 .build()
 
         then: "no side effects"

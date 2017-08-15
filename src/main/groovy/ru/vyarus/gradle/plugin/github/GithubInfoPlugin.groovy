@@ -29,7 +29,7 @@ class GithubInfoPlugin implements Plugin<Project> {
             new PomConfigurer(),
             new PluginPublishConfigurer(),
             new BintrayConfigurer(),
-    ]
+    ] as List<GithubInfoConfigurer>
 
     @Override
     void apply(Project project) {
