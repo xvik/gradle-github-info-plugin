@@ -62,7 +62,6 @@ class PomConfigurer implements GithubInfoConfigurer {
                 }
             }
         }
-
     }
 
     private void appendDefault(Node pomXml, String name, String value) {

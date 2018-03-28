@@ -12,8 +12,8 @@ import spock.lang.Specification
  */
 abstract class AbstractKitTest extends Specification {
 
-    static String BINTRAY_PLUGIN_VERSION = '1.7.1'
-    static String JAVALIB_PLUGIN_VERSION = '1.0.3'
+    static String BINTRAY_PLUGIN_VERSION = '1.8.0'
+    static String JAVALIB_PLUGIN_VERSION = '1.0.5'
 
     @Rule
     final TemporaryFolder testProjectDir = new TemporaryFolder()
@@ -21,6 +21,8 @@ abstract class AbstractKitTest extends Specification {
 
     def setup() {
         buildFile = testProjectDir.newFile('build.gradle')
+        // jacoco coverage support
+        fileFromClasspath('gradle.properties', 'testkit-gradle.properties')
         // override maven local repository
         // (see org.gradle.api.internal.artifacts.mvnsettings.DefaultLocalMavenRepositoryLocator.getLocalMavenRepository)
         System.setProperty("maven.repo.local", new File(testProjectDir.root, "build/repo").getAbsolutePath());
@@ -37,11 +39,15 @@ abstract class AbstractKitTest extends Specification {
     File fileFromClasspath(String toFile, String source) {
         File target = file(toFile)
         target.parentFile.mkdirs()
-        target << getClass().getResourceAsStream(source).text
+        target << (getClass().getResourceAsStream(source) ?: getClass().classLoader.getResourceAsStream(source)).text
     }
 
+    /**
+     * Allow debug TestKit vm execution. After vm start it will wait for debug connection and continue processing after.
+     * (the same effect could be achieved with GradleRunner.withDebug(true) method)
+     */
     def debug() {
-        file('gradle.properties') << "org.gradle.jvmargs=-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000"
+        file('gradle.properties') << "\norg.gradle.jvmargs=-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000"
     }
 
     String projectName() {

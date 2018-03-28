@@ -1,6 +1,9 @@
 # Gradle Github info plugin
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![Build Status](https://img.shields.io/travis/xvik/gradle-github-info-plugin.svg)](https://travis-ci.org/xvik/gradle-github-info-plugin)
+[![Appveyor build status](https://ci.appveyor.com/api/projects/status/github/xvik/gradle-github-info-plugin?svg=true)](https://ci.appveyor.com/project/xvik/gradle-github-info-plugin)
+[![codecov](https://codecov.io/gh/xvik/gradle-github-info-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/xvik/gradle-github-info-plugin)
+
 
 ### About
 
@@ -20,7 +23,7 @@ Releases are published to [bintray jcenter](https://bintray.com/vyarus/xvik/grad
 [maven central](https://maven-badges.herokuapp.com/maven-central/ru.vyarus/gradle-github-info-plugin) and 
 [gradle plugins portal](https://plugins.gradle.org/plugin/ru.vyarus.github-info).
 
-[![JCenter](https://img.shields.io/bintray/v/vyarus/xvik/gradle-github-info-plugin.svg?label=jcenter)](https://bintray.com/vyarus/xvik/gradle-github-info-plugin/_latestVersion)
+[![JCenter](https://api.bintray.com/packages/vyarus/xvik/gradle-github-info-plugin/images/download.svg)](https://bintray.com/vyarus/xvik/gradle-github-info-plugin/_latestVersion)
 [![Maven Central](https://img.shields.io/maven-central/v/ru.vyarus/gradle-github-info-plugin.svg)](https://maven-badges.herokuapp.com/maven-central/ru.vyarus/gradle-github-info-plugin)
 
 ```groovy
