@@ -19,13 +19,13 @@ wrapper {
     gradleVersion = '5.6.4'
 }
 
-repositories { jcenter(); gradlePluginPortal() }
+repositories { jcenter(); gradlePluginPortal(); maven { url 'https://jitpack.io' } }
 dependencies {
     testCompile('org.spockframework:spock-core:1.2-groovy-2.5') {
         exclude group: 'org.codehaus.groovy'
     }
     testCompile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-    testCompile 'ru.vyarus:gradle-java-lib-plugin:1.1.2'
+    testCompile 'com.github.xvik:gradle-java-lib-plugin:master-SNAPSHOT'
     testCompile 'com.gradle.publish:plugin-publish-plugin:0.10.1'
 }
 
