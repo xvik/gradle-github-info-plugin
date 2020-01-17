@@ -47,8 +47,8 @@ class GithubInfoPluginTest extends AbstractTest {
         github.repositoryUrl == "https://github.com/$projectId"
         github.site == "https://github.com/$projectId"
         github.issues == "https://github.com/$projectId/issues"
-        github.vcsUrl == "https://github.com/${projectId}.git"
-        github.scmConnection == "scm:git:git://github.com/${projectId}.git"
+        github.vcsUrl == "https://github.com/${projectId}"
+        github.scmConnection == "scm:git:git://github.com/${projectId}"
         github.licenseName == "The MIT License"
         github.licenseUrl == "http://opensource.org/licenses/MIT"
     }

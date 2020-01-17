@@ -115,17 +115,17 @@ class GithubInfoExtension {
     }
 
     /**
-     * Vcs url. By default, github git url (https://github.com/user/repo.git)
+     * Vcs url. By default, github git url (https://github.com/user/repo)
      */
     String getVcsUrl() {
-        vcsUrl ?: "https://${baseUrlPart()}.git"
+        vcsUrl ?: "https://${baseUrlPart()}"
     }
 
     /**
-     * Scm connection url. By default, git scm url (scm:git:git://github.com/user/repo.git)
+     * Scm connection url. By default, git scm url (scm:git:git://github.com/user/repo)
      */
     String getScmConnection() {
-        scmConnection ?: "scm:git:git://${baseUrlPart()}.git"
+        scmConnection ?: "scm:git:git://${baseUrlPart()}"
     }
 
     /**

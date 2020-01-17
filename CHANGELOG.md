@@ -1,3 +1,5 @@
+* Remove ".git" suffix for default scm urls  
+
 ### 1.1.0 (2016-04-08)
 * Add `changelogFile` configuration property, used to specify changelog file path. Default file name is recognized by 
     CHANGELOG.md, CHANGELOG.txt or CHANGELOG files in project root.

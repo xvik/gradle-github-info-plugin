@@ -58,9 +58,9 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
         then: "scm section applied"
         def projectId = "test/$testProjectDir.root.name"
         def scm = pom.scm
-        scm.url.text() == "https://github.com/${projectId}.git"
-        scm.connection.text() == "scm:git:git://github.com/${projectId}.git"
-        scm.developerConnection.text() == "scm:git:git://github.com/${projectId}.git"
+        scm.url.text() == "https://github.com/${projectId}"
+        scm.connection.text() == "scm:git:git://github.com/${projectId}"
+        scm.developerConnection.text() == "scm:git:git://github.com/${projectId}"
 
         then: "license section applied"
         def license = pom.licenses.license
@@ -133,8 +133,8 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
         def projectId = "test/$testProjectDir.root.name"
         def scm = pom.scm
         scm.url.text() == "http://google.com" // should not override user input
-        scm.connection.text() == "scm:git:git://github.com/${projectId}.git"
-        scm.developerConnection.text() == "scm:git:git://github.com/${projectId}.git"
+        scm.connection.text() == "scm:git:git://github.com/${projectId}"
+        scm.developerConnection.text() == "scm:git:git://github.com/${projectId}"
 
         then: "license section applied"
         def license = pom.licenses.license

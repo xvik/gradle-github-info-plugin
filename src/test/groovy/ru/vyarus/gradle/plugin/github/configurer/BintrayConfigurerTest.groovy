@@ -27,7 +27,7 @@ class BintrayConfigurerTest extends AbstractTest {
         then: "bintray plugin configured"
         def projectId = "test/$project.name"
         project.bintray.pkg.websiteUrl == "https://github.com/$projectId"
-        project.bintray.pkg.vcsUrl == "https://github.com/${projectId}.git"
+        project.bintray.pkg.vcsUrl == "https://github.com/${projectId}"
         project.bintray.pkg.issueTrackerUrl == "https://github.com/${projectId}/issues"
         project.bintray.pkg.licenses == ['MIT']
         project.bintray.pkg.githubRepo == projectId
@@ -60,7 +60,7 @@ class BintrayConfigurerTest extends AbstractTest {
         then: "user config preserved"
         def projectId = "test/$project.name"
         project.bintray.pkg.websiteUrl == "http://google.com"
-        project.bintray.pkg.vcsUrl == "https://github.com/${projectId}.git"
+        project.bintray.pkg.vcsUrl == "https://github.com/${projectId}"
         project.bintray.pkg.issueTrackerUrl == "https://github.com/${projectId}/issues"
         project.bintray.pkg.licenses == ['OTHER']
         project.bintray.pkg.githubRepo == projectId

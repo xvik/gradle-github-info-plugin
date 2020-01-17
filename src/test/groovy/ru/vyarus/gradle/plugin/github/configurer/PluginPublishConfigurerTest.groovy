@@ -26,7 +26,7 @@ class PluginPublishConfigurerTest extends AbstractTest {
         then: "plugin publish configured"
         def projectId = "test/$project.name"
         project.pluginBundle.website == "https://github.com/$projectId"
-        project.pluginBundle.vcsUrl == "https://github.com/${projectId}.git"
+        project.pluginBundle.vcsUrl == "https://github.com/${projectId}"
     }
 
     def "Check user configuration preserve"() {
@@ -50,7 +50,7 @@ class PluginPublishConfigurerTest extends AbstractTest {
         then: "user configuration preserved"
         def projectId = "test/$project.name"
         project.pluginBundle.website == "test"
-        project.pluginBundle.vcsUrl == "https://github.com/${projectId}.git"
+        project.pluginBundle.vcsUrl == "https://github.com/${projectId}"
     }
 
 }
