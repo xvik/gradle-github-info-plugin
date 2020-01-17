@@ -1,4 +1,5 @@
 * Remove ".git" suffix for default scm urls  
+* (breaking) Drop java 7 support
 
 ### 1.1.0 (2016-04-08)
 * Add `changelogFile` configuration property, used to specify changelog file path. Default file name is recognized by 
