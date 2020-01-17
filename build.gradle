@@ -1,31 +1,32 @@
 plugins {
+    id 'com.gradle.build-scan' version '3.0'
+    id 'com.gradle.plugin-publish' version '0.10.1'
+    id 'java-gradle-plugin'
     id 'groovy'
     id 'jacoco'
-    id 'java-gradle-plugin'
-    id 'com.gradle.plugin-publish' version '0.9.10'
-    id 'net.researchgate.release' version '2.6.0'
-    id 'ru.vyarus.quality' version '3.0.0'
-    id 'com.jfrog.bintray' version '1.8.0'
-    id 'ru.vyarus.java-lib' version '1.0.5'
+    id 'net.researchgate.release' version '2.8.1'
+    id 'ru.vyarus.quality' version '4.0.0'
+    id 'com.jfrog.bintray' version '1.8.4'
+    id 'ru.vyarus.java-lib' version '1.1.2'
     id 'ru.vyarus.github-info' version '1.1.0'
-    id 'com.github.ben-manes.versions' version '0.17.0'
-    id "pl.droidsonroids.jacoco.testkit" version "1.0.3"
+    id 'com.github.ben-manes.versions' version '0.27.0'
+    id "pl.droidsonroids.jacoco.testkit" version "1.0.5"
 }
 
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
 
 wrapper {
-    gradleVersion = '4.6'
+    gradleVersion = '5.6.4'
 }
 
-repositories { jcenter(); maven { url "https://plugins.gradle.org/m2/"} }
+repositories { jcenter(); gradlePluginPortal() }
 dependencies {
-    testCompile('org.spockframework:spock-core:1.1-groovy-2.4') {
-        exclude module: 'groovy-all'
+    testCompile('org.spockframework:spock-core:1.2-groovy-2.5') {
+        exclude group: 'org.codehaus.groovy'
     }
-    testCompile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
-    testCompile 'ru.vyarus:gradle-java-lib-plugin:1.0.5'
-    testCompile 'com.gradle.publish:plugin-publish-plugin:0.9.10'
+    testCompile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+    testCompile 'ru.vyarus:gradle-java-lib-plugin:1.1.2'
+    testCompile 'com.gradle.publish:plugin-publish-plugin:0.10.1'
 }
 
 group = 'ru.vyarus'
@@ -72,16 +73,18 @@ bintray {
     }
 }
 
-pluginBundle {
-    description = 'Generates common Github links by convention and configures common plugins'
-    tags = ['github']
-
+gradlePlugin {
     plugins {
         githubInfoPlugin {
             id = 'ru.vyarus.github-info'
             displayName = project.description
+            implementationClass = 'ru.vyarus.gradle.plugin.github.GithubInfoPlugin'
         }
     }
+}
+pluginBundle {
+    description = 'Generates common Github links by convention and configures common plugins'
+    tags = ['github']
 
     mavenCoordinates {
         groupId = project.group
@@ -102,6 +105,9 @@ test {
         exceptionFormat 'full'
     }
     maxHeapSize = '512m'
+    doLast {
+        sleep(1000)
+    }
 }
 
 dependencyUpdates {
@@ -111,4 +117,9 @@ dependencyUpdates {
     revision = 'release'
 }
 jacocoTestReport.reports.xml.enabled = true
-generateJacocoTestKitProperties.destinationFile = file('build/jacoco/test.exec').absolutePath.replace("\\", '/')
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+    publishOnFailure()
+}

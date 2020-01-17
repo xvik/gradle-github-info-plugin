@@ -27,8 +27,10 @@ class DependencyFreeKitTest extends AbstractKitTest {
                 license 'MIT'
             }
 
-            task checkState << {
-                assert github.site
+            task checkState {
+                doLast {
+                    assert github.site
+                }
             }
         """
 

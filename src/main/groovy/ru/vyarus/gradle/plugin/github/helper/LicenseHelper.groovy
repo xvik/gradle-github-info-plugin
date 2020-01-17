@@ -22,7 +22,7 @@ class LicenseHelper {
 
     // @formatter:off
     @SuppressWarnings('DuplicateStringLiteral')
-    private final String[][] licenses = [
+    private final List<List<String>> licenses = [
             ['Apache',        'Apache License 2.0',                           'Apache-2.0'],
             ['GPLv2',         'GNU General Public License 2.0',              'GPL-2.0'],
             ['GPLv3',         'GNU General Public License 3.0',              'GPL-3.0'],
@@ -34,7 +34,7 @@ class LicenseHelper {
             ['EPL',           'Eclipse Public License 1.0',                   'EPL-1.0'],
             ['BSD 3-clause', 'The BSD 3-Clause License',                     'BSD-3-Clause'],
             ['MPL',           'Mozilla Public License 2.0',                   'MPL-2.0'],
-    ] as String[][]
+    ]
     // @formatter:on
 
     Project project
@@ -42,7 +42,7 @@ class LicenseHelper {
 
     LicenseHelper(Project project) {
         this.project = project
-        licenses.each { String[] lic ->
+        licenses.each { List<String> lic ->
             descriptions.put(lic[0], new LicenseDescription(
                     id: lic[0], name: lic[1], url: "http://opensource.org/licenses/${lic[2]}"))
         }

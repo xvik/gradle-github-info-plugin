@@ -37,11 +37,13 @@ class ConfigurationReferenceKitTest extends AbstractKitTest {
                 }
             }
 
-            task checkBintrayConfig << {
-                assert bintray.pkg.websiteUrl == github.site
-                assert bintray.pkg.issueTrackerUrl == github.issues
-                assert bintray.pkg.vcsUrl == github.vcsUrl
-                assert bintray.pkg.licenses[0] == github.license
+            task checkBintrayConfig {
+                doLast {
+                    assert bintray.pkg.websiteUrl == github.site
+                    assert bintray.pkg.issueTrackerUrl == github.issues
+                    assert bintray.pkg.vcsUrl == github.vcsUrl
+                    assert bintray.pkg.licenses[0] == github.license
+                }
             }
         """
 
@@ -75,9 +77,11 @@ class ConfigurationReferenceKitTest extends AbstractKitTest {
                 }
             }
 
-            task checkBintrayConfig << {
-                assert github.licenseName
-                assert bintray.pkg.desc == github.licenseName
+            task checkBintrayConfig {
+                doLast {
+                    assert github.licenseName
+                    assert bintray.pkg.desc == github.licenseName
+                }
             }
         """
 

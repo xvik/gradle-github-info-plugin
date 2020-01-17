@@ -84,7 +84,6 @@ class GithubInfoExtension {
     }
 
     /**
-     *
      * Changelog file path relative to root. Default to CHANGELOG.md, CHANGELOG.txt or CHANGELOG
      * if file with this name found in project root, otherwise should be specified manually.
      * (for now, only bintray support this optional info)
