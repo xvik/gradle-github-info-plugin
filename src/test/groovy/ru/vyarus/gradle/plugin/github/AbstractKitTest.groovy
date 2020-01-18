@@ -13,7 +13,7 @@ import spock.lang.Specification
 abstract class AbstractKitTest extends Specification {
 
     static String BINTRAY_PLUGIN_VERSION = '1.8.4'
-    static String JAVALIB_PLUGIN_VERSION = '1.1.2'
+    static String JAVALIB_PLUGIN_VERSION = '2.0.1'
 
     @Rule
     final TemporaryFolder testProjectDir = new TemporaryFolder()
