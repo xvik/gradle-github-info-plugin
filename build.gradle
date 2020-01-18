@@ -21,12 +21,12 @@ wrapper {
 
 repositories { jcenter(); gradlePluginPortal(); maven { url 'https://jitpack.io' } }
 dependencies {
-    testCompile('org.spockframework:spock-core:1.2-groovy-2.5') {
+    testImplementation('org.spockframework:spock-core:1.2-groovy-2.5') {
         exclude group: 'org.codehaus.groovy'
     }
-    testCompile 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-    testCompile 'ru.vyarus:gradle-java-lib-plugin:2.0.0'
-    testCompile 'com.gradle.publish:plugin-publish-plugin:0.10.1'
+    testImplementation 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+    testImplementation 'ru.vyarus:gradle-java-lib-plugin:2.0.0'
+    testImplementation 'com.gradle.publish:plugin-publish-plugin:0.10.1'
 }
 
 group = 'ru.vyarus'
