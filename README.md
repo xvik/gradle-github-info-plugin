@@ -10,21 +10,26 @@
 Plugin generates common github links (like repository, issues, vcs etc) for project and configures common plugins. 
 The main intention is to remove boilerplate and simplify project configuration.
 
-* Add `github` configuration closure. In most cases requires only user and license to apply conventions.
-* `github` may be used directly in other configuration closures (e.g. `github.site`)
-* Configures default values for `maven-publish` (pom), `plugin-publish` and `com.jfrog.bintray` plugins
+Features:
+
+* Supports plugins:
+    - `maven-publish` configure published pom sections (including license section)
+    - `com.jfrog.bintray` configure bintray package info
+    - `plugin-publish` configure gradle plugin links
+* Conventional github links may be used directly to configre other plugins manually through `github` object (e.g. `github.site`)
 
 You can use it with [java-lib plugin](https://github.com/xvik/gradle-java-lib-plugin) to remove more configuration boilerplate
-for java or groovy library.
+for java or groovy library or gradle plugin.
+
+##### Summary
+
+* Configuration closures: `github`
 
 ### Setup
 
-Releases are published to [bintray jcenter](https://bintray.com/vyarus/xvik/gradle-github-info-plugin/), 
-[maven central](https://maven-badges.herokuapp.com/maven-central/ru.vyarus/gradle-github-info-plugin) and 
-[gradle plugins portal](https://plugins.gradle.org/plugin/ru.vyarus.github-info).
-
-[![JCenter](https://api.bintray.com/packages/vyarus/xvik/gradle-github-info-plugin/images/download.svg)](https://bintray.com/vyarus/xvik/gradle-github-info-plugin/_latestVersion)
+[![JCenter](https://img.shields.io/bintray/v/vyarus/xvik/gradle-github-info-plugin.svg?label=jcenter)](https://bintray.com/vyarus/xvik/gradle-github-info-plugin/_latestVersion)
 [![Maven Central](https://img.shields.io/maven-central/v/ru.vyarus/gradle-github-info-plugin.svg)](https://maven-badges.herokuapp.com/maven-central/ru.vyarus/gradle-github-info-plugin)
+[![Gradle Plugin Portal](https://img.shields.io/maven-metadata/v/https/plugins.gradle.org/m2/ru/vyarus/github-info/ru.vyarus.github-info.gradle.plugin/maven-metadata.xml.svg?colorB=007ec6&label=plugins%20portal)](https://plugins.gradle.org/plugin/ru.vyarus.github-info)
 
 ```groovy
 buildscript {
@@ -32,7 +37,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'ru.vyarus:gradle-github-info-plugin:1.1.0'
+        classpath 'ru.vyarus:gradle-github-info-plugin:1.2.0'
     }
 }
 apply plugin: 'ru.vyarus.github-info'
@@ -42,9 +47,16 @@ OR
 
 ```groovy
 plugins {
-    id 'ru.vyarus.github-info' version '1.1.0'
+    id 'ru.vyarus.github-info' version '1.2.0'
 }
 ```
+
+#### Compatibility
+
+Plugin compiled for java 8, compatible with java 11
+
+Should work with any gradle version.
+
 
 ### Usage
 
@@ -95,8 +107,8 @@ somePlugin {
 | repositoryUrl | Github repository url | https://github.com/$user/$repository |
 | issues | Url to github issues | https://github.com/$user/$repository/issues |
 | site | Project website | $repositoryUrl |
-| vcsUrl | Version control url | https://github.com/$user/${repository}.git |
-| scmConnection | SCM connection url | scm:git:git://github.com/$user/${repository}.git |
+| vcsUrl | Version control url | https://github.com/$user/${repository} |
+| scmConnection | SCM connection url | scm:git:git://github.com/$user/${repository} |
 | changelogFile | Path to changelog file, relative to project root | CHANGELOG.md, CHANGELOG.txt or CHANGELOG if file found in project root |
 
 #### License
@@ -121,6 +133,7 @@ If `license` property value is one of license id above then `licenseName` will b
 Otherwise, `licenseName` must be specified manually.
  
 `licenseUrl` default:
+
  * Looks if `LICENSE` or `LICENSE.txt` file contained in project root, then url will be
  `https://raw.githubusercontent.com/$user/$repository/master/LICENSE` (or with txt extension accordingly)
  * If license file not found in project, but `license` matches known license id (table above) then url will be set as
@@ -211,7 +224,7 @@ bintray {
 So you can avoid these properties in `bintray` configuration in your build file. If you manually specify any of these
 values it will not be overridden.
 
-Note that github* properties are required to configure bintray ui for showing github readme as main documentation 
+Note that github properties are required to configure bintray ui for showing github readme as main documentation 
 and changelog as release notes files
 
 
