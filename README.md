@@ -1,6 +1,6 @@
 # Gradle Github info plugin
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/travis/xvik/gradle-github-info-plugin.svg)](https://travis-ci.org/xvik/gradle-github-info-plugin)
+[![Build Status](https://travis-ci.com/xvik/gradle-github-info-plugin.svg?branch=master)](https://travis-ci.com/xvik/gradle-github-info-plugin)
 [![Appveyor build status](https://ci.appveyor.com/api/projects/status/github/xvik/gradle-github-info-plugin?svg=true)](https://ci.appveyor.com/project/xvik/gradle-github-info-plugin)
 [![codecov](https://codecov.io/gh/xvik/gradle-github-info-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/xvik/gradle-github-info-plugin)
 
@@ -27,14 +27,13 @@ for java or groovy library or gradle plugin.
 
 ### Setup
 
-[![JCenter](https://img.shields.io/bintray/v/vyarus/xvik/gradle-github-info-plugin.svg?label=jcenter)](https://bintray.com/vyarus/xvik/gradle-github-info-plugin/_latestVersion)
 [![Maven Central](https://img.shields.io/maven-central/v/ru.vyarus/gradle-github-info-plugin.svg)](https://maven-badges.herokuapp.com/maven-central/ru.vyarus/gradle-github-info-plugin)
 [![Gradle Plugin Portal](https://img.shields.io/maven-metadata/v/https/plugins.gradle.org/m2/ru/vyarus/github-info/ru.vyarus.github-info.gradle.plugin/maven-metadata.xml.svg?colorB=007ec6&label=plugins%20portal)](https://plugins.gradle.org/plugin/ru.vyarus.github-info)
 
 ```groovy
 buildscript {
     repositories {
-        jcenter()
+        gradlePluginPortal()
     }
     dependencies {
         classpath 'ru.vyarus:gradle-github-info-plugin:1.2.0'
