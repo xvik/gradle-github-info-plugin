@@ -11,7 +11,6 @@ import spock.lang.TempDir
  */
 abstract class AbstractKitTest extends Specification {
 
-    static String BINTRAY_PLUGIN_VERSION = '1.8.4'
     static String JAVALIB_PLUGIN_VERSION = '2.2.0'
 
     boolean debug

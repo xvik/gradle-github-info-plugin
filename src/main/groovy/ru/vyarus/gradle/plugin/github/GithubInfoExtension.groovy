@@ -25,7 +25,7 @@ import ru.vyarus.gradle.plugin.github.helper.LicenseHelper
  *         license 'MIT'
  *     }
  * </pre>
- * Generated fields may be used in other configurations like pom generation or bintray upload.
+ * Generated fields may be used in other configurations like pom generation.
  * Simply reference required property <code>github.site</code>
  * <p>
  * Special method {@code rawFileUrl} may be used to generate direct links to files on github repository.
@@ -86,7 +86,6 @@ class GithubInfoExtension {
     /**
      * Changelog file path relative to root. Default to CHANGELOG.md, CHANGELOG.txt or CHANGELOG
      * if file with this name found in project root, otherwise should be specified manually.
-     * (for now, only bintray support this optional info)
      */
     String getChangelogFile() {
         changelogFile ?: changelogHelper.defaultChangelogName()

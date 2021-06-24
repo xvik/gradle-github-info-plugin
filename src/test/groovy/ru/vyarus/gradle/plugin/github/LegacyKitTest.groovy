@@ -6,6 +6,8 @@ package ru.vyarus.gradle.plugin.github
  */
 class LegacyKitTest extends AbstractKitTest {
 
+    public static final String GRADLE_VERSION = '5.1'
+
     def "Check pom modifications"() {
         setup:
         build """
@@ -43,7 +45,7 @@ class LegacyKitTest extends AbstractKitTest {
         file('LICENSE').createNewFile()
 
         when: "run pom task"
-        def result = runVer('5.1','generatePomFileForMavenPublication')
+        def result = runVer(GRADLE_VERSION,'generatePomFileForMavenPublication')
 
         def pomFile = file("build/generated-pom.xml")
         def pom = new XmlParser().parse(pomFile)

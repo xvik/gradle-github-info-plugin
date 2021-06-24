@@ -6,6 +6,8 @@ package ru.vyarus.gradle.plugin.github
  */
 class UpstreamKitTest extends AbstractKitTest {
 
+    public static final String GRADLE_VERSION = '7.0'
+
     def "Check pom modifications"() {
         setup:
         build """
@@ -43,7 +45,7 @@ class UpstreamKitTest extends AbstractKitTest {
         file('LICENSE').createNewFile()
 
         when: "run pom task"
-        def result = runVer('6.0','generatePomFileForMavenPublication')
+        def result = runVer(GRADLE_VERSION,'generatePomFileForMavenPublication')
 
         def pomFile = file("build/generated-pom.xml")
         def pom = new XmlParser().parse(pomFile)

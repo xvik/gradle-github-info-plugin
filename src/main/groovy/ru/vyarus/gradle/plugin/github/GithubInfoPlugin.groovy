@@ -3,7 +3,6 @@ package ru.vyarus.gradle.plugin.github
 import groovy.transform.CompileStatic
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import ru.vyarus.gradle.plugin.github.configurer.BintrayConfigurer
 import ru.vyarus.gradle.plugin.github.configurer.GithubInfoConfigurer
 import ru.vyarus.gradle.plugin.github.configurer.PluginPublishConfigurer
 import ru.vyarus.gradle.plugin.github.configurer.PomConfigurer
@@ -15,7 +14,7 @@ import ru.vyarus.gradle.plugin.github.configurer.PomConfigurer
  * (see {@link ru.vyarus.gradle.plugin.github.helper.LicenseHelper})
  * Info may be used directly in configurations (e.g. {@code github.site}).
  * <p>
- * Plugin detects and configure the following plugins: maven-publish (pom), plugin-publish and bintray.
+ * Plugin detects and configure the following plugins: maven-publish (pom) and plugin-publish.
  * (see {@link GithubInfoConfigurer} implementations).
  *
  * @author Vyacheslav Rusakov
@@ -28,7 +27,6 @@ class GithubInfoPlugin implements Plugin<Project> {
     private final List<GithubInfoConfigurer> support = new ArrayList<>([
             new PomConfigurer(),
             new PluginPublishConfigurer(),
-            new BintrayConfigurer(),
     ])
 
     @Override

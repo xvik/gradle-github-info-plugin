@@ -1,3 +1,5 @@
+* Remove bintray plugin support
+
 ### 1.2.0 (2020-01-19)
 * Remove ".git" suffix for default scm urls  
 * (breaking) Drop java 7 support

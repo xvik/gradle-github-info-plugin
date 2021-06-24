@@ -24,7 +24,6 @@ dependencies {
     testImplementation('org.spockframework:spock-core:2.0-groovy-2.5') {
         exclude group: 'org.codehaus.groovy'
     }
-    testImplementation 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
     testImplementation 'ru.vyarus:gradle-java-lib-plugin:2.2.0'
     testImplementation 'com.gradle.publish:plugin-publish-plugin:0.15.0'
 }
