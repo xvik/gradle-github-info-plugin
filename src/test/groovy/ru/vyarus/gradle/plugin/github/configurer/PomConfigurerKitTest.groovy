@@ -52,7 +52,7 @@ class PomConfigurerKitTest extends AbstractKitTest {
         println pomFile.getText()
 
         then: "scm section applied"
-        def projectId = "test/$testProjectDir.root.name"
+        def projectId = "test/$testProjectDir.name"
         def scm = pom.scm
         scm.url.text() == "https://github.com/${projectId}"
         scm.connection.text() == "scm:git:git://github.com/${projectId}"
@@ -120,7 +120,7 @@ class PomConfigurerKitTest extends AbstractKitTest {
         println pomFile.getText()
 
         then: "scm section merged"
-        def projectId = "test/$testProjectDir.root.name"
+        def projectId = "test/$testProjectDir.name"
         def scm = pom.scm
         scm.url.text() == "http://other.url"
         scm.connection.text() == "scm:git:git://github.com/${projectId}"

@@ -56,7 +56,7 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
         developer.email.text() == 'dev@gmail.com'
 
         then: "scm section applied"
-        def projectId = "test/$testProjectDir.root.name"
+        def projectId = "test/$testProjectDir.name"
         def scm = pom.scm
         scm.url.text() == "https://github.com/${projectId}"
         scm.connection.text() == "scm:git:git://github.com/${projectId}"
@@ -72,7 +72,7 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
         pom.url.text() == "https://github.com/$projectId"
 
         then: "defaults applied"
-        pom.name.text() == testProjectDir.root.name
+        pom.name.text() == testProjectDir.name
         pom.description.text() == 'sample description'
     }
 
@@ -130,7 +130,7 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
         developer.email.text() == 'dev@gmail.com'
 
         then: "scm section applied"
-        def projectId = "test/$testProjectDir.root.name"
+        def projectId = "test/$testProjectDir.name"
         def scm = pom.scm
         scm.url.text() == "http://google.com" // should not override user input
         scm.connection.text() == "scm:git:git://github.com/${projectId}"
@@ -146,7 +146,7 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
         pom.url.text() == "https://github.com/$projectId"
 
         then: "defaults applied"
-        pom.name.text() == testProjectDir.root.name
+        pom.name.text() == testProjectDir.name
         pom.description.text() == 'sample description'
     }
 }

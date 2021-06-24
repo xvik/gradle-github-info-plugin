@@ -71,7 +71,7 @@ class GithubInfoPluginTest extends AbstractTest {
 
     def "Check license file detected correctly"() {
         setup:
-        testProjectDir.newFile('LICENSE')
+        file('LICENSE').createNewFile()
 
         when: "plugin configured"
         Project project = project {

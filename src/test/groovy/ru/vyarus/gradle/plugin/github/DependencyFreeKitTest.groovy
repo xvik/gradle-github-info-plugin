@@ -36,7 +36,7 @@ class DependencyFreeKitTest extends AbstractKitTest {
 
         when: "run task without extra plugins in classpath"
         BuildResult result = GradleRunner.create()
-                .withProjectDir(testProjectDir.root)
+                .withProjectDir(testProjectDir)
                 .withArguments('checkState', '--stacktrace')
                 .withPluginClasspath([new File('build/classes/groovy/main'), new File('build/resources/main')])
                 .build()
