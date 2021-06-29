@@ -1,5 +1,6 @@
+### 1.3.0 (2021-06-30)
 * Remove bintray plugin support
-* In multi-module projects plugin use root project for defaults (and license and changelog files resolution) 
+* In multi-module projects plugin use root project for defaults (license and changelog files searched in root) 
 
 ### 1.2.0 (2020-01-19)
 * Remove ".git" suffix for default scm urls  

@@ -14,9 +14,9 @@ Features:
 
 * Supports plugins:
     - `maven-publish` configure published pom sections (including license section)
-    - `com.jfrog.bintray` configure bintray package info
     - `plugin-publish` configure gradle plugin links
-* Conventional github links may be used directly to configre other plugins manually through `github` object (e.g. `github.site`)
+* Conventional github links may be used directly to configure other plugins manually through `github` object (e.g. `github.site`)
+* In multi-module project always configures defaults from the root project
 
 You can use it with [java-lib plugin](https://github.com/xvik/gradle-java-lib-plugin) to remove more configuration boilerplate
 for java or groovy library or gradle plugin.
@@ -36,7 +36,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'ru.vyarus:gradle-github-info-plugin:1.2.0'
+        classpath 'ru.vyarus:gradle-github-info-plugin:1.3.0'
     }
 }
 apply plugin: 'ru.vyarus.github-info'
@@ -46,7 +46,7 @@ OR
 
 ```groovy
 plugins {
-    id 'ru.vyarus.github-info' version '1.2.0'
+    id 'ru.vyarus.github-info' version '1.3.0'
 }
 ```
 
@@ -69,7 +69,7 @@ github {
 ```
 
 User may be used to define either user or organization (links will be correct for both).
-`github.repository` will be set to project name by default.
+`github.repository` will be set to project name by default (root project name in case of multi-module).
 
 Other license properties may be also required (see below).
 
@@ -99,7 +99,7 @@ somePlugin {
 | Property | Description |  Default value |
 |----------|-------------|----------------|
 | user | Github user or organization name | |
-| repository | Github repository name | $project.name |
+| repository | Github repository name | $rootProject.name |
 | license | License short name (e.g. 'MIT') | |
 | licenseName | License full name (e.g. 'The MIT License') | may be set by convention (see license section) |
 | licenseUrl | Url to license file | may be set by convention (see license section) |
@@ -201,31 +201,6 @@ pluginBundle {
 
 So you can avoid these properties in `pluginBundle` configuration in your build file. If you manually specify any of these
 values it will not be overridden.
-
-#### com.jfrog.bintray
-
-If [com.jfrog.bintray](https://github.com/bintray/gradle-bintray-plugin) plugin available, then following
-defaults will be applied:
-
-```groovy
-bintray {
-    pkg {
-        websiteUrl = github.site
-        issueTrackerUrl = github.issues
-        vcsUrl = github.vcsUrl
-        licenses = [github.license]
-        githubRepo = "$github.user/$github.repository"
-        githubReleaseNotesFile = github.changelogFile
-    }
-}
-``` 
-
-So you can avoid these properties in `bintray` configuration in your build file. If you manually specify any of these
-values it will not be overridden.
-
-Note that github properties are required to configure bintray ui for showing github readme as main documentation 
-and changelog as release notes files
-
 
 ### Might also like
 
