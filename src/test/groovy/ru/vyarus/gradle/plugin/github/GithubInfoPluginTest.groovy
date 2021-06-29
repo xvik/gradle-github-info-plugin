@@ -124,4 +124,35 @@ class GithubInfoPluginTest extends AbstractTest {
         project.github.rawFileUrl('tt\\TEST') == 'https://raw.githubusercontent.com/test/sample/master/tt/TEST'
         project.github.rawFileUrl('TEST', 'other') == 'https://raw.githubusercontent.com/test/sample/other/TEST'
     }
+
+    def "Check configuration from module"() {
+
+        when: "plugin configured"
+        Project project = projectBuilder()
+                .child('sub') {
+                    apply plugin: "ru.vyarus.github-info"
+
+                    github {
+                        user 'test'
+                        license 'MIT'
+                    }
+                }.build()
+        file('LICENSE.txt').createNewFile()
+        file('CHANGELOG.md').createNewFile()
+
+        then: "generated fields valid"
+        def projectId = "test/$project.name"
+        def child = project.project(':sub')
+        GithubInfoExtension github = child.extensions.github;
+
+        github.repository == project.name
+        github.repositoryUrl == "https://github.com/$projectId"
+        github.site == "https://github.com/$projectId"
+        github.issues == "https://github.com/$projectId/issues"
+        github.vcsUrl == "https://github.com/${projectId}"
+        github.scmConnection == "scm:git:git://github.com/${projectId}"
+        github.licenseName == "The MIT License"
+        github.licenseUrl == github.rawFileUrl('LICENSE.txt')
+        github.changelogFile == 'CHANGELOG.md'
+    }
 }

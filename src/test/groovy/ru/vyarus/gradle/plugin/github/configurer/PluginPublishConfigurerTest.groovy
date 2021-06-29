@@ -53,4 +53,26 @@ class PluginPublishConfigurerTest extends AbstractTest {
         project.pluginBundle.vcsUrl == "https://github.com/${projectId}"
     }
 
+    def "Check configuration from root"() {
+
+        when: "plugin configured"
+        Project project = projectBuilder()
+                .child('sub') {
+                    apply plugin: 'java'
+                    apply plugin: "ru.vyarus.github-info"
+                    apply plugin: "com.gradle.plugin-publish"
+
+                    github {
+                        user 'test'
+                        license 'MIT'
+                    }
+                }.build()
+
+        then: "plugin publish configured"
+        def child = project.project(':sub')
+        def projectId = "test/$project.name"
+        child.pluginBundle.website == "https://github.com/$projectId"
+        child.pluginBundle.vcsUrl == "https://github.com/${projectId}"
+    }
+
 }

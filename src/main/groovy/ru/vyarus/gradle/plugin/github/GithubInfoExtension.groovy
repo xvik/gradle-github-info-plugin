@@ -39,9 +39,12 @@ class GithubInfoExtension {
     private final ChangelogHelper changelogHelper
 
     GithubInfoExtension(Project project) {
-        licenseHelper = new LicenseHelper(project)
-        changelogHelper = new ChangelogHelper(project)
-        repository = project.name
+        // for multi-module project always configure from the root project
+        Project target = project.rootProject
+
+        licenseHelper = new LicenseHelper(target)
+        changelogHelper = new ChangelogHelper(target)
+        repository = target.name
     }
 
     /**
