@@ -62,6 +62,12 @@ class GithubInfoExtension {
      */
     String repository
 
+    /**
+     * Branch name for file links (like license). Used 'HEAD' by default because github default branch was changed
+     * to 'main', but many projects continue using 'master'. HEAD would automatically redirect into correct branch.
+     */
+    String branch = 'HEAD'
+
     String licenseName
     String licenseUrl
     String repositoryUrl
@@ -131,11 +137,21 @@ class GithubInfoExtension {
     }
 
     /**
+     * Shortcut for {@link #rawFileUrl(java.lang.String, java.lang.String)} with default branch.
+     *
      * @param filePath file path from project root
-     * @param branch git branch (master by default)
      * @return direct link to file on github
      */
-    String rawFileUrl(String filePath, String branch = 'master') {
+    String rawFileUrl(String filePath) {
+        return rawFileUrl(filePath, branch)
+    }
+
+    /**
+     * @param filePath file path from project root
+     * @param branch git branch (HEAD by default to auto redirect to correct branch)
+     * @return direct link to file on github
+     */
+    String rawFileUrl(String filePath, String branch) {
         "https://raw.githubusercontent.com/$user/$repository/$branch/${filePath.replaceAll('\\\\', '/')}"
     }
 

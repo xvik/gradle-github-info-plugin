@@ -65,7 +65,7 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
         then: "license section applied"
         def license = pom.licenses.license
         license.name.text() == "The MIT License"
-        license.url.text() == "https://raw.githubusercontent.com/$projectId/master/LICENSE"
+        license.url.text() == "https://raw.githubusercontent.com/$projectId/HEAD/LICENSE"
         license.distribution.text() == "repo"
 
         then: "site url applied"
@@ -139,7 +139,7 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
         then: "license section applied"
         def license = pom.licenses.license
         license.name.text() == "The MIT License"
-        license.url.text() == "https://raw.githubusercontent.com/$projectId/master/LICENSE"
+        license.url.text() == "https://raw.githubusercontent.com/$projectId/HEAD/LICENSE"
         license.distribution.text() == "repo"
 
         then: "site url applied"

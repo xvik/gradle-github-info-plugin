@@ -1,3 +1,6 @@
+* Use HEAD branch for file links by default to support both old default 'master' and new default 'main' (#1)
+  - Add 'branch' configuration property (with HEAD as default)
+
 ### 1.3.0 (2021-06-30)
 * Remove bintray plugin support
 * In multi-module projects plugin use root project for defaults (license and changelog files searched in root) 

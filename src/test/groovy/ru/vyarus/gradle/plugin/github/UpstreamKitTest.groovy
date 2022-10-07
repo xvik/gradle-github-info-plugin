@@ -6,7 +6,7 @@ package ru.vyarus.gradle.plugin.github
  */
 class UpstreamKitTest extends AbstractKitTest {
 
-    public static final String GRADLE_VERSION = '7.1'
+    public static final String GRADLE_VERSION = '7.5'
 
     def "Check pom modifications"() {
         setup:
@@ -68,7 +68,7 @@ class UpstreamKitTest extends AbstractKitTest {
         then: "license section applied"
         def license = pom.licenses.license
         license.name.text() == "The MIT License"
-        license.url.text() == "https://raw.githubusercontent.com/$projectId/master/LICENSE"
+        license.url.text() == "https://raw.githubusercontent.com/$projectId/HEAD/LICENSE"
         license.distribution.text() == "repo"
 
         then: "site url applied"

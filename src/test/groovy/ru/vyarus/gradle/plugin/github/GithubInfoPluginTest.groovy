@@ -86,7 +86,7 @@ class GithubInfoPluginTest extends AbstractTest {
         then:
         def projectId = "test/$project.name"
         def github = project.extensions.github;
-        github.licenseUrl == "https://raw.githubusercontent.com/$projectId/master/LICENSE"
+        github.licenseUrl == "https://raw.githubusercontent.com/$projectId/HEAD/LICENSE"
     }
 
     def "Check extension object"() {
@@ -119,9 +119,9 @@ class GithubInfoPluginTest extends AbstractTest {
         }
 
         then:
-        project.github.rawFileUrl('TEST') == 'https://raw.githubusercontent.com/test/sample/master/TEST'
-        project.github.rawFileUrl('tt/TEST') == 'https://raw.githubusercontent.com/test/sample/master/tt/TEST'
-        project.github.rawFileUrl('tt\\TEST') == 'https://raw.githubusercontent.com/test/sample/master/tt/TEST'
+        project.github.rawFileUrl('TEST') == 'https://raw.githubusercontent.com/test/sample/HEAD/TEST'
+        project.github.rawFileUrl('tt/TEST') == 'https://raw.githubusercontent.com/test/sample/HEAD/tt/TEST'
+        project.github.rawFileUrl('tt\\TEST') == 'https://raw.githubusercontent.com/test/sample/HEAD/tt/TEST'
         project.github.rawFileUrl('TEST', 'other') == 'https://raw.githubusercontent.com/test/sample/other/TEST'
     }
 

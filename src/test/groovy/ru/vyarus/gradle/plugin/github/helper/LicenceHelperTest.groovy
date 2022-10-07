@@ -64,6 +64,26 @@ class LicenceHelperTest extends AbstractTest {
         LicenseHelper helper = new LicenseHelper(project)
 
         expect: "file recognized"
-        helper.defaultLicenseUrl(project.github) == 'https://raw.githubusercontent.com/test/sample/master/LICENSE'
+        helper.defaultLicenseUrl(project.github) == 'https://raw.githubusercontent.com/test/sample/HEAD/LICENSE'
+    }
+
+    def "Check branch configuration"() {
+
+        setup:
+        file('LICENSE').createNewFile()
+        Project project = project {
+            apply plugin: "ru.vyarus.github-info"
+
+            github {
+                user 'test'
+                repository 'sample'
+                license 'MIT'
+                branch 'main'
+            }
+        }
+        LicenseHelper helper = new LicenseHelper(project)
+
+        expect: "file recognized"
+        helper.defaultLicenseUrl(project.github) == 'https://raw.githubusercontent.com/test/sample/main/LICENSE'
     }
 }
