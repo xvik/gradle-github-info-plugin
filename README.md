@@ -36,7 +36,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'ru.vyarus:gradle-github-info-plugin:1.3.0'
+        classpath 'ru.vyarus:gradle-github-info-plugin:1.4.0'
     }
 }
 apply plugin: 'ru.vyarus.github-info'
@@ -46,7 +46,7 @@ OR
 
 ```groovy
 plugins {
-    id 'ru.vyarus.github-info' version '1.3.0'
+    id 'ru.vyarus.github-info' version '1.4.0'
 }
 ```
 
@@ -96,18 +96,19 @@ somePlugin {
 
 ### Available properties
 
-| Property | Description |  Default value |
-|----------|-------------|----------------|
-| user | Github user or organization name | |
-| repository | Github repository name | $rootProject.name |
-| license | License short name (e.g. 'MIT') | |
-| licenseName | License full name (e.g. 'The MIT License') | may be set by convention (see license section) |
-| licenseUrl | Url to license file | may be set by convention (see license section) |
-| repositoryUrl | Github repository url | https://github.com/$user/$repository |
-| issues | Url to github issues | https://github.com/$user/$repository/issues |
-| site | Project website | $repositoryUrl |
-| vcsUrl | Version control url | https://github.com/$user/${repository} |
-| scmConnection | SCM connection url | scm:git:git://github.com/$user/${repository} |
+| Property      | Description                                      | Default value                                                          |
+|---------------|--------------------------------------------------|------------------------------------------------------------------------|
+| user          | Github user or organization name                 |                                                                        |
+| repository    | Github repository name                           | $rootProject.name                                                      |
+| branch        | Branch name for file links                       | HEAD (to support both legacy 'master' and new 'main')                      |
+| license       | License short name (e.g. 'MIT')                  |                                                                        |
+| licenseName   | License full name (e.g. 'The MIT License')       | may be set by convention (see license section)                         |
+| licenseUrl    | Url to license file                              | may be set by convention (see license section)                         |
+| repositoryUrl | Github repository url                            | https://github.com/$user/$repository                                   |
+| issues        | Url to github issues                             | https://github.com/$user/$repository/issues                            |
+| site          | Project website                                  | $repositoryUrl                                                         |
+| vcsUrl        | Version control url                              | https://github.com/$user/${repository}                                 |
+| scmConnection | SCM connection url                               | scm:git:git://github.com/$user/${repository}                           |
 | changelogFile | Path to changelog file, relative to project root | CHANGELOG.md, CHANGELOG.txt or CHANGELOG if file found in project root |
 
 #### License
@@ -134,7 +135,7 @@ Otherwise, `licenseName` must be specified manually.
 `licenseUrl` default:
 
  * Looks if `LICENSE` or `LICENSE.txt` file contained in project root, then url will be
- `https://raw.githubusercontent.com/$user/$repository/master/LICENSE` (or with txt extension accordingly)
+ `https://raw.githubusercontent.com/$user/$repository/HEAD/LICENSE` (or with txt extension accordingly)
  * If license file not found in project, but `license` matches known license id (table above) then url will be set as
   link to `opensource.org` (see links above)
  * If neither license file found nor license id recognized then url must be set manually 
@@ -153,10 +154,10 @@ github.rawFileUrl('folder/file.txt')
 Will generate the following url:
 
 ```
-https://raw.githubusercontent.com/$user/$repository/master/folder/file.txt
+https://raw.githubusercontent.com/$user/$repository/HEAD/folder/file.txt
 ```
 
-Branch parameter is optional ('master' by default)
+Branch parameter is optional ('HEAD' by default in order to support both old 'master' and new 'main' default branch names)
 
 ### Plugins defaults
 

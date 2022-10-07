@@ -1,3 +1,4 @@
+### 1.3.0 (2022-10-08)
 * Use HEAD branch for file links by default to support both old default 'master' and new default 'main' (#1)
   - Add 'branch' configuration property (with HEAD as default)
 
