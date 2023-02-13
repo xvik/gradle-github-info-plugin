@@ -1,12 +1,14 @@
 package ru.vyarus.gradle.plugin.github
 
+import org.gradle.api.Project
+
 /**
  * @author Vyacheslav Rusakov
  * @since 17.01.2020
  */
 class UpstreamKitTest extends AbstractKitTest {
 
-    public static final String GRADLE_VERSION = '7.5'
+    public static final String GRADLE_VERSION = '7.6'
 
     def "Check pom modifications"() {
         setup:
@@ -77,5 +79,45 @@ class UpstreamKitTest extends AbstractKitTest {
         then: "defaults applied"
         pom.name.text() == testProjectDir.name
         pom.description.text() == 'sample description'
+    }
+
+    def "Check gradle plugin modifications"() {
+        setup:
+        build """
+            plugins {
+                id 'com.gradle.plugin-publish' version '1.1.0'
+                id 'ru.vyarus.github-info'
+                id 'ru.vyarus.java-lib' version '$JAVALIB_PLUGIN_VERSION'
+            }
+
+            group 'ru.vyarus'
+            version 1.0
+            description 'sample description'
+
+            github {
+                user 'test'
+                license 'MIT'
+            }
+
+            tasks.register('checkInfo') {
+                doLast {
+                    println "gradlePlugin.website: \${gradlePlugin.website.get()}"
+                    println "gradlePlugin.vcsUrl: \${gradlePlugin.vcsUrl.get()}"
+                    println "pluginBundle.website: \${pluginBundle.website?: 'NONE'}"
+                    println "pluginBundle.vcsUrl: \${pluginBundle.vcsUrl?: 'NONE'}"
+                }
+            }            
+        """
+        file('LICENSE').createNewFile()
+
+        when: "run task"
+        def result = runVer(GRADLE_VERSION, 'checkInfo')
+
+        then: "publish plugin configured"
+        result.output.contains("gradlePlugin.website: https://github.com/test/$testProjectDir.name")
+        result.output.contains("gradlePlugin.vcsUrl: https://github.com/test/$testProjectDir.name")
+        result.output.contains("pluginBundle.website: NONE")
+        result.output.contains("pluginBundle.vcsUrl: NONE")
+        
     }
 }

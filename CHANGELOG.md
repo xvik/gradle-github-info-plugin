@@ -1,3 +1,6 @@
+* Starting from gradle 7.6 configure gradlePlugin.website (and vcsUrl) instead of pluginBundle.website
+  (with publish plugin 1.0 pluginBundle not needed, but trigger backwards compatibility if configured)
+
 ### 1.4.0 (2022-10-08)
 * Use HEAD branch for file links by default to support both old default 'master' and new default 'main' (#1)
   - Add 'branch' configuration property (with HEAD as default)

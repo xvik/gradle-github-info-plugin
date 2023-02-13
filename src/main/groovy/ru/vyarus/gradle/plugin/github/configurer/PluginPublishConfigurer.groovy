@@ -3,6 +3,7 @@ package ru.vyarus.gradle.plugin.github.configurer
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
 import org.gradle.api.Project
+import org.gradle.util.GradleVersion
 import ru.vyarus.gradle.plugin.github.GithubInfoExtension
 
 /**
@@ -25,9 +26,21 @@ class PluginPublishConfigurer implements GithubInfoConfigurer {
     void configure(Project project, GithubInfoExtension github) {
         project.plugins.withId('com.gradle.plugin-publish') {
             project.configure(project) {
-                pluginBundle.with {
-                    website = website ?: github.site
-                    vcsUrl = vcsUrl ?: github.vcsUrl
+                if (GradleVersion.current() < GradleVersion.version('7.6')) {
+                    pluginBundle.with {
+                        website = website ?: github.site
+                        vcsUrl = vcsUrl ?: github.vcsUrl
+                    }
+                } else {
+                    // since gradle 7.6 pluginBundle should not be used
+                    gradlePlugin.with {
+                        if (!website.present) {
+                            website.set(github.site)
+                        }
+                        if (!vcsUrl.present) {
+                            vcsUrl.set(github.vcsUrl)
+                        }
+                    }
                 }
             }
         }
