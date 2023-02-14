@@ -9,11 +9,12 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
 /**
  * If 'com.gradle.plugin-publish' plugin registered configures urls:
  * <pre>
- *     pluginBundle {
+ *     gradlePlugin {
  *         website = github.site
  *         vcsUrl = github.vcsUrl
  *     }
  * </pre>
+ * For gradle older then 7.5 pluginBundle is configured instead.
  * Configuration set only if no value provided yet (user configuration is not overridden).
  *
  * @author Vyacheslav Rusakov
