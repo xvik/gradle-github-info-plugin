@@ -7,7 +7,7 @@
 
 ### About
 
-Plugin generates common github links (like repository, issues, vcs etc) for project and configures common plugins. 
+Plugin generates common github links (like repository, issues, vcs etc) for project and configures common plugins.
 The main intention is to remove boilerplate and simplify project configuration.
 
 Features:
@@ -36,17 +36,17 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'ru.vyarus:gradle-github-info-plugin:1.4.0'
+        classpath 'ru.vyarus:gradle-github-info-plugin:1.5.0'
     }
 }
 apply plugin: 'ru.vyarus.github-info'
 ```
 
-OR 
+OR
 
 ```groovy
 plugins {
-    id 'ru.vyarus.github-info' version '1.4.0'
+    id 'ru.vyarus.github-info' version '1.5.0'
 }
 ```
 
@@ -131,20 +131,20 @@ Plugin contains hardcoded info for most common licenses:
 
 If `license` property value is one of license id above then `licenseName` will be set.
 Otherwise, `licenseName` must be specified manually.
- 
+
 `licenseUrl` default:
 
- * Looks if `LICENSE` or `LICENSE.txt` file contained in project root, then url will be
- `https://raw.githubusercontent.com/$user/$repository/HEAD/LICENSE` (or with txt extension accordingly)
- * If license file not found in project, but `license` matches known license id (table above) then url will be set as
+* Looks if `LICENSE` or `LICENSE.txt` file contained in project root, then url will be
+  `https://raw.githubusercontent.com/$user/$repository/HEAD/LICENSE` (or with txt extension accordingly)
+* If license file not found in project, but `license` matches known license id (table above) then url will be set as
   link to `opensource.org` (see links above)
- * If neither license file found nor license id recognized then url must be set manually 
+* If neither license file found nor license id recognized then url must be set manually
 
 #### Utility method
 
 `github.rawFileUrl(file, branch)` method may be used in build script to generate direct (raw) urls to files on github repository.
 
-For example, 
+For example,
 
 ```groovy
 github.rawFileUrl('folder/file.txt')
@@ -191,7 +191,16 @@ for all defined publications pom will be extended with:
 #### plugin-publish
 
 If [publish-plugin](https://plugins.gradle.org/docs/publish-plugin) plugin available, then following defaults
-will be applied:
+will be applied for gradle 7.6 and above:
+
+```groovy
+gradlePlugin {
+    website = github.site
+    vcsUrl = github.vcsUrl
+}
+```
+
+For older gradle versions `pluginBundle` configured:
 
 ```groovy
 pluginBundle {
@@ -200,7 +209,7 @@ pluginBundle {
 }
 ```
 
-So you can avoid these properties in `pluginBundle` configuration in your build file. If you manually specify any of these
+So you can avoid these properties in `gradlePlugin` configuration in your build file. If you manually specify any of these
 values it will not be overridden.
 
 ### Might also like
