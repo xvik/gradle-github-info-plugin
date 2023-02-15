@@ -54,7 +54,9 @@ plugins {
 
 Plugin compiled for java 8, compatible with java 11
 
-Should work with any gradle version.
+Gradle | Version
+--------|-------
+5.1-8   | 1.5.0
 
 
 ### Usage
