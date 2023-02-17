@@ -21,7 +21,7 @@ wrapper {
 
 repositories { mavenLocal(); mavenCentral(); gradlePluginPortal() }
 dependencies {
-    testImplementation('org.spockframework:spock-core:2.0-groovy-2.5') {
+    testImplementation('org.spockframework:spock-core:2.3-groovy-4.0') {
         exclude group: 'org.codehaus.groovy'
     }
     testImplementation 'ru.vyarus:gradle-java-lib-plugin:2.4.0'
