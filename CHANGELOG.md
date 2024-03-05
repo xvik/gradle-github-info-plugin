@@ -1,3 +1,5 @@
+* (BREAKING) Drop gradle 5 and 6 support
+
 ### 1.5.0 (2023-02-15)
 * (breaking) Starting from gradle 7.6, gradlePlugin.website (and vcsUrl) would be configured instead of pluginBundle.website
   (with publish plugin 1.0 pluginBundle not needed, but trigger backwards compatibility if configured)

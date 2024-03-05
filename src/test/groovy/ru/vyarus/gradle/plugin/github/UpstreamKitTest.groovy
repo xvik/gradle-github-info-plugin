@@ -1,11 +1,14 @@
 package ru.vyarus.gradle.plugin.github
+
+import groovy.xml.XmlParser
+
 /**
  * @author Vyacheslav Rusakov
  * @since 17.01.2020
  */
 class UpstreamKitTest extends AbstractKitTest {
 
-    public static final String GRADLE_VERSION = '8.0'
+    public static final String GRADLE_VERSION = '8.6'
 
     def "Check pom modifications"() {
         setup:
@@ -82,7 +85,7 @@ class UpstreamKitTest extends AbstractKitTest {
         setup:
         build """
             plugins {
-                id 'com.gradle.plugin-publish' version '1.1.0'
+                id 'com.gradle.plugin-publish' version '1.2.1'
                 id 'ru.vyarus.github-info'
                 id 'ru.vyarus.java-lib' version '$JAVALIB_PLUGIN_VERSION'
             }

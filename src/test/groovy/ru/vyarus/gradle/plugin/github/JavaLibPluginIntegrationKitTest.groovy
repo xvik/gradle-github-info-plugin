@@ -1,4 +1,7 @@
 package ru.vyarus.gradle.plugin.github
+
+import groovy.xml.XmlParser
+
 /**
  * @author Vyacheslav Rusakov 
  * @since 11.11.2015

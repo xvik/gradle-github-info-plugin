@@ -1,12 +1,14 @@
 package ru.vyarus.gradle.plugin.github
 
+import groovy.xml.XmlParser
+
 /**
  * @author Vyacheslav Rusakov
  * @since 17.01.2020
  */
 class LegacyKitTest extends AbstractKitTest {
 
-    public static final String GRADLE_VERSION = '5.1'
+    public static final String GRADLE_VERSION = '7.0'
 
     def "Check pom modifications"() {
         setup:

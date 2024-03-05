@@ -1,11 +1,11 @@
 plugins {
-    id 'com.gradle.plugin-publish' version '0.21.0'
+    id 'com.gradle.plugin-publish' version '1.2.1'
     id 'java-gradle-plugin'
     id 'groovy'
     id 'jacoco'
     id 'signing'
     id 'net.researchgate.release' version '3.0.2'
-    id 'ru.vyarus.quality' version '4.9.0'
+    id 'ru.vyarus.quality' version '5.0.0'
     id 'io.github.gradle-nexus.publish-plugin' version '1.3.0'
     id 'ru.vyarus.java-lib' version '2.4.0'
     id 'ru.vyarus.github-info' version '1.5.0'
@@ -75,17 +75,10 @@ gradlePlugin {
         githubInfoPlugin {
             id = 'ru.vyarus.github-info'
             displayName = project.description
+            description = 'Generates common Github links by convention and configures common plugins'
+            tags.set(['github'])
             implementationClass = 'ru.vyarus.gradle.plugin.github.GithubInfoPlugin'
         }
-    }
-}
-pluginBundle {
-    description = 'Generates common Github links by convention and configures common plugins'
-    tags = ['github']
-
-    mavenCoordinates {
-        groupId = project.group
-        artifactId = project.name
     }
 }
 

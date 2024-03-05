@@ -11,7 +11,7 @@ import spock.lang.TempDir
  */
 abstract class AbstractKitTest extends Specification {
 
-    static String JAVALIB_PLUGIN_VERSION = '2.2.0'
+    static String JAVALIB_PLUGIN_VERSION = '2.4.0'
 
     boolean debug
     @TempDir File testProjectDir

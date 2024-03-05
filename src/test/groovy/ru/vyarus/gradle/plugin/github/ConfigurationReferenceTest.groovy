@@ -21,14 +21,21 @@ class ConfigurationReferenceTest extends AbstractTest {
                 license 'MIT'
             }
 
-            pluginBundle {
-                description = github.site
+            gradlePlugin {
+                plugins {
+                    somePlugin {
+                        id = 'ru.vyarus.sample'
+                        // any class
+                        implementationClass = 'ru.vyarus.gradle.plugin.github.GithubInfoPlugin'
+                        description = github.site
+                    }
+                }
             }
         }
 
         then: "generated fields valid"
         def projectId = "test/$project.name"
 
-        project.pluginBundle.description == "https://github.com/$projectId"
+        project.gradlePlugin.plugins.somePlugin.description == "https://github.com/$projectId"
     }
 }

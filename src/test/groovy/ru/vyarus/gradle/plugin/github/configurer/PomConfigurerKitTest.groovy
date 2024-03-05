@@ -1,5 +1,6 @@
 package ru.vyarus.gradle.plugin.github.configurer
 
+import groovy.xml.XmlParser
 import ru.vyarus.gradle.plugin.github.AbstractKitTest
 
 

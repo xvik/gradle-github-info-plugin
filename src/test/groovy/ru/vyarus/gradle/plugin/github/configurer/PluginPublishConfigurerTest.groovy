@@ -25,8 +25,8 @@ class PluginPublishConfigurerTest extends AbstractTest {
 
         then: "plugin publish configured"
         def projectId = "test/$project.name"
-        project.pluginBundle.website == "https://github.com/$projectId"
-        project.pluginBundle.vcsUrl == "https://github.com/${projectId}"
+        project.gradlePlugin.website.get() == "https://github.com/$projectId"
+        project.gradlePlugin.vcsUrl.get() == "https://github.com/${projectId}"
     }
 
     def "Check user configuration preserve"() {
@@ -42,15 +42,15 @@ class PluginPublishConfigurerTest extends AbstractTest {
                 license 'MIT'
             }
 
-            pluginBundle {
+            gradlePlugin {
                 website = 'test'
             }
         }
 
         then: "user configuration preserved"
         def projectId = "test/$project.name"
-        project.pluginBundle.website == "test"
-        project.pluginBundle.vcsUrl == "https://github.com/${projectId}"
+        project.gradlePlugin.website.get() == "test"
+        project.gradlePlugin.vcsUrl.get() == "https://github.com/${projectId}"
     }
 
     def "Check configuration from root"() {
@@ -71,8 +71,8 @@ class PluginPublishConfigurerTest extends AbstractTest {
         then: "plugin publish configured"
         def child = project.project(':sub')
         def projectId = "test/$project.name"
-        child.pluginBundle.website == "https://github.com/$projectId"
-        child.pluginBundle.vcsUrl == "https://github.com/${projectId}"
+        child.gradlePlugin.website.get() == "https://github.com/$projectId"
+        child.gradlePlugin.vcsUrl.get() == "https://github.com/${projectId}"
     }
 
 }
