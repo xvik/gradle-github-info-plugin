@@ -27,7 +27,7 @@ dependencies {
     testImplementation('org.spockframework:spock-core:2.3-groovy-3.0') {
         exclude group: 'org.codehaus.groovy'
     }
-    testImplementation 'ru.vyarus:gradle-java-lib-plugin:2.4.0'
+    testImplementation 'ru.vyarus:gradle-java-lib-plugin:3.0.0'
     testImplementation 'com.gradle.publish:plugin-publish-plugin:1.2.1'
 }
 

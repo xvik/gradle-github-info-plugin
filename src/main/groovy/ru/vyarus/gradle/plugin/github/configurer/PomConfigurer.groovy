@@ -6,28 +6,30 @@ import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
-import ru.vyarus.gradle.plugin.github.GithubInfoExtension
+import ru.vyarus.gradle.plugin.github.helper.ExtensionModel
+
+import static ru.vyarus.gradle.plugin.github.helper.XmlUtils.appendDefault
 
 /**
  * If 'maven-publish' plugin registered, modifies poms in all publications.
  * <pre>
- *     pom {
- *         url github.site
+ *     maven.pom {
+ *         url = github.site
  *         scm {
- *             url github.vcsUrl
- *             connection github.scmConnection
- *             developerConnection github.scmConnection
+ *             url = github.vcsUrl
+ *             connection = github.scmConnection
+ *             developerConnection = github.scmConnection
  *         }
  *         licenses {
  *             license {
- *                 name github.licenseName
- *                 url github.licenseUrl
- *                 distribution 'repo'
+ *                 name = github.licenseName
+ *                 url = github.licenseUrl
+ *                 distribution = 'repo'
  *             }
  *         }
  *         issueManagement {
- *             system 'GitHub'
- *             url github.issues
+ *             system = 'GitHub'
+ *             url = github.issues
  *         }
  *     }
  * </pre>
@@ -40,13 +42,14 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
 class PomConfigurer implements GithubInfoConfigurer {
 
     @Override
-    void configure(Project project, GithubInfoExtension github) {
+    void configure(Project project, ExtensionModel github) {
         project.plugins.withType(MavenPublishPlugin) {
             PublishingExtension publishing = project.publishing
             // apply to all configured maven publications
             publishing.publications.withType(MavenPublication) {
                 pom.withXml {
                     Node pomXml = asNode()
+                    // prefix required for configuration cache proper work
                     appendDefault(pomXml, 'url', github.site)
 
                     appendDefault(pomXml, 'scm.url', github.vcsUrl)
@@ -61,17 +64,6 @@ class PomConfigurer implements GithubInfoConfigurer {
                     appendDefault(pomXml, 'issueManagement.url', github.issues)
                 }
             }
-        }
-    }
-
-    private void appendDefault(Node pomXml, String name, String value) {
-        String[] nodes = name.split('\\.')
-        Node node = pomXml
-        nodes.each {
-            node = node[it] ? node[it][0] : node.appendNode(it)
-        }
-        if (!node.text()) {
-            node.value = value
         }
     }
 }

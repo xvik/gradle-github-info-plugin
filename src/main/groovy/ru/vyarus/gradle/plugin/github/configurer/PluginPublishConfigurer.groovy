@@ -4,7 +4,7 @@ import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
 import org.gradle.api.Project
 import org.gradle.util.GradleVersion
-import ru.vyarus.gradle.plugin.github.GithubInfoExtension
+import ru.vyarus.gradle.plugin.github.helper.ExtensionModel
 
 /**
  * If 'com.gradle.plugin-publish' plugin registered configures urls:
@@ -24,7 +24,7 @@ import ru.vyarus.gradle.plugin.github.GithubInfoExtension
 class PluginPublishConfigurer implements GithubInfoConfigurer {
 
     @Override
-    void configure(Project project, GithubInfoExtension github) {
+    void configure(Project project, ExtensionModel github) {
         project.plugins.withId('com.gradle.plugin-publish') {
             project.configure(project) {
                 if (GradleVersion.current() < GradleVersion.version('7.6')) {

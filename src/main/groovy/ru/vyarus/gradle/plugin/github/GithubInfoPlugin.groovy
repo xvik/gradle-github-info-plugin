@@ -6,6 +6,7 @@ import org.gradle.api.Project
 import ru.vyarus.gradle.plugin.github.configurer.GithubInfoConfigurer
 import ru.vyarus.gradle.plugin.github.configurer.PluginPublishConfigurer
 import ru.vyarus.gradle.plugin.github.configurer.PomConfigurer
+import ru.vyarus.gradle.plugin.github.helper.ExtensionModel
 
 /**
  * Github info plugin generates commonly required links for github hosted project, like site, issues, scm urls.
@@ -35,7 +36,10 @@ class GithubInfoPlugin implements Plugin<Project> {
 
         project.afterEvaluate {
             validate(github)
-            support*.configure(project, github)
+
+            // for configuration cache compatibility, raw extension can't be used
+            ExtensionModel model = ExtensionModel.create(github)
+            support*.configure(project, model)
         }
     }
 

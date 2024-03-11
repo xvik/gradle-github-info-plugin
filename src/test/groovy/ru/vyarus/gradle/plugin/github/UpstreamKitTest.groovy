@@ -28,12 +28,12 @@ class UpstreamKitTest extends AbstractKitTest {
                 license 'MIT'
             }
 
-            pom {
+            maven.pom {
                 developers {
                     developer {
-                        id "dev"
-                        name "Dev Dev"
-                        email "dev@gmail.com"
+                        id = "dev"
+                        name = "Dev Dev"
+                        email = "dev@gmail.com"
                     }
                 }
             }

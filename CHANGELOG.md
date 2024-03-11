@@ -1,4 +1,5 @@
 * (BREAKING) Drop gradle 5 and 6 support
+* Configuration cache compatibility
 
 ### 1.5.0 (2023-02-15)
 * (breaking) Starting from gradle 7.6, gradlePlugin.website (and vcsUrl) would be configured instead of pluginBundle.website

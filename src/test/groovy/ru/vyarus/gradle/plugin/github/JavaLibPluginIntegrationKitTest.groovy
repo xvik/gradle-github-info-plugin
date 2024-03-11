@@ -26,12 +26,12 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
                 license 'MIT'
             }
 
-            pom {
+            maven.pom {
                 developers {
                     developer {
-                        id "dev"
-                        name "Dev Dev"
-                        email "dev@gmail.com"
+                        id = "dev"
+                        name = "Dev Dev"
+                        email = "dev@gmail.com"
                     }
                 }
             }
@@ -97,15 +97,15 @@ class JavaLibPluginIntegrationKitTest extends AbstractKitTest {
                 license 'MIT'
             }
 
-            pom {
+            maven.pom {
                 scm {
-                    url 'http://google.com'
+                    url = 'http://google.com'
                 }
                 developers {
                     developer {
-                        id "dev"
-                        name "Dev Dev"
-                        email "dev@gmail.com"
+                        id = "dev"
+                        name = "Dev Dev"
+                        email = "dev@gmail.com"
                     }
                 }
             }
