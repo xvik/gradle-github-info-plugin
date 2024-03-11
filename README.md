@@ -36,7 +36,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'ru.vyarus:gradle-github-info-plugin:1.5.0'
+        classpath 'ru.vyarus:gradle-github-info-plugin:2.0.0'
     }
 }
 apply plugin: 'ru.vyarus.github-info'
@@ -46,17 +46,18 @@ OR
 
 ```groovy
 plugins {
-    id 'ru.vyarus.github-info' version '1.5.0'
+    id 'ru.vyarus.github-info' version '2.0.0'
 }
 ```
 
 #### Compatibility
 
-Plugin compiled for java 8, compatible with java 11
+Plugin compiled for java 8, compatible with java 17
 
 Gradle | Version
 --------|-------
-5.1-8   | 1.5.0
+7       | 2.0.0
+5.1     | [1.5.0](https://github.com/xvik/gradle-github-info-plugin/tree/1.5.0)
 
 
 ### Usage
@@ -90,9 +91,9 @@ github {
 }
 
 somePlugin {
-    websiteUrl github.site
-    vcsUrl github.vcsUrl
-    importantFileUrl github.rawFileUrl('IFile.txt')
+    websiteUrl = github.site
+    vcsUrl = github.vcsUrl
+    importantFileUrl = github.rawFileUrl('IFile.txt')
 }
 ```
 
