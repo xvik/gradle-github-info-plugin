@@ -59,6 +59,42 @@ Gradle | Version
 7       | 2.0.0
 5.1     | [1.5.0](https://github.com/xvik/gradle-github-info-plugin/tree/1.5.0)
 
+#### Snapshots
+
+<details>
+      <summary>Snapshots may be used through JitPack</summary>
+
+* Go to [JitPack project page](https://jitpack.io/#ru.vyarus/gradle-github-info-plugin)
+* Select `Commits` section and click `Get it` on commit you want to use
+  or use `master-SNAPSHOT` to use the most recent snapshot
+
+* Add to `settings.gradle` (top most!) (exact commit hash might be used as version) :
+
+  ```groovy
+  pluginManagement {
+      resolutionStrategy {
+          eachPlugin {
+              if (requested.id.id == 'ru.vyarus.github-info') {
+                  useModule('ru.vyarus:gradle-github-info-plugin:master-SNAPSHOT')
+              }
+          }
+      }
+      repositories {
+          gradlePluginPortal()      
+          maven { url 'https://jitpack.io' }              
+      }
+  }    
+  ``` 
+* Use plugin without declaring version:
+
+  ```groovy
+  plugins {
+      id 'ru.vyarus.github-info'
+  }
+  ```  
+
+</details>
+
 
 ### Usage
 
