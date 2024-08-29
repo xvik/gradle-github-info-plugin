@@ -28,7 +28,7 @@ dependencies {
         exclude group: 'org.codehaus.groovy'
     }
     testImplementation 'ru.vyarus:gradle-java-lib-plugin:3.0.0'
-    testImplementation 'com.gradle.publish:plugin-publish-plugin:1.2.1'
+    testImplementation 'com.gradle.publish:plugin-publish-plugin:1.2.2'
 }
 
 group = 'ru.vyarus'
