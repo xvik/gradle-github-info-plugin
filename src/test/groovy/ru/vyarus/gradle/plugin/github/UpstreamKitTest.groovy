@@ -1,14 +1,16 @@
 package ru.vyarus.gradle.plugin.github
 
 import groovy.xml.XmlParser
+import spock.lang.Requires
 
 /**
  * @author Vyacheslav Rusakov
  * @since 17.01.2020
  */
+@Requires({jvm.java17Compatible})
 class UpstreamKitTest extends AbstractKitTest {
 
-    public static final String GRADLE_VERSION = '8.6'
+    public static final String GRADLE_VERSION = '9.0.0'
 
     def "Check pom modifications"() {
         setup:
